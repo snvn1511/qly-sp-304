@@ -23,11 +23,44 @@ const ListProduct = (props) => {
         }
     }
     const renderProduct = (row) => {
+
+        const xoaSp = () => {
+            let url_api = "https://63db6922a3ac95cec5a10e24.mockapi.io/demo-api/sanpham/" + row.item.id;
+               
+            fetch(url_api, {
+                method: 'DELETE',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                
+            })
+                .then((res) => {
+                    if (res.status == 200){
+                        alert('Xóa thành công');
+                        getListPro();
+                    }
+                        
+
+                }).catch((err) => {
+                    console.log(err);
+                });
+        }
+
+
         console.log(row);
         return (
             <View>
                 <Text>Tên sp: {row.item.name}  -- giá {row.item.price}
                 </Text>
+
+                <Button title="Xóa" onPress={xoaSp} />
+
+
+                <Button title="Sửa" onPress={ ()=>{
+                    props.navigation.navigate('EditProduct',{item_sp:row.item})
+                }} />
+
             </View>
         );
     }

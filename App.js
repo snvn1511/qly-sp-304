@@ -13,6 +13,7 @@ const App = () => {
       <StackDemo.Navigator initialRouteName='ListProduct'>
         <StackDemo.Screen name='ListProduct' component={ListProduct} options={{ title: 'Danh sách SP' }} />
         <StackDemo.Screen name='AddProduct' component={AddProduct} options={{ title: 'Thêm SP' }} />
+        <StackDemo.Screen name='EditProduct' component={EditProduct} options={{ title: 'Sửa SP' }} />
         
       </StackDemo.Navigator>
     </NavigationContainer>
